@@ -1,0 +1,62 @@
+<html>
+
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=GB2312"/>
+	<link rel="stylesheet" type="text/css" href="qrc:/style/style.css"/>
+	<script type="text/javascript" src="qrc:/script/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		function init() {			
+			$("#loadingdiv").html("正在加载城市天气预报...");
+			
+			$.getJSON("http://m.weather.com.cn/data/101010100.html",
+				function(data) {
+					$("#loadingdiv").html("");
+					var weatherinfo = data["weatherinfo"];  
+					var datearray = ["", weatherinfo["date_y"], "第二天", "第三天", "第四天", "第五天", "第六天"];  
+					$("#cityname").html(weatherinfo["city"] + "城市天气预报");  
+					for (i = 1; i <= 6; i++) {  
+						var divid = "#div" + i;              
+						$(divid).append(datearray[i]).append("<br>");  
+						var imgurl = "http://m.weather.com.cn/weather_img/" + weatherinfo["img"+(i*2-1)] + ".gif";                 
+						$(divid).append('<img src="' + imgurl + '"/>').append("<br>");  
+						$(divid).append(weatherinfo["temp" + i]).append("<br>");  
+						$(divid).append(weatherinfo["weather" + i]);                 
+					}
+				}
+			);
+			
+			// HTML5 test
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext("2d");
+			context.fillStyle = '#A6CAF0 ';
+			context.font = 'italic 30px sans-serif';
+			context.textBaseline='top';
+			context.fillText('Hello World!', 0, 0);
+			context.font = 'bold 30px sans-serif';
+			context.fillText('Hello world!', 0, 50);   
+		}
+	</script>
+</head>
+
+<body onload="init()">
+	<h1>Welcome!!!</h1>
+	
+	<div id="weatherreportdiv">
+		<div id="loadingdiv"></div>
+		<div id="cityname"></div>  
+		<hr></hr>
+		<div id="div1" class="weatherdiv"></div>  
+		<div id="div2" class="weatherdiv"></div>  
+		<div id="div3" class="weatherdiv"></div>  
+		<div id="div4" class="weatherdiv"></div>  
+		<div id="div5" class="weatherdiv"></div>  
+		<div id="div6" class="weatherdiv"></div>  
+	</div>
+	
+	<canvas id="myCanvas"></canvas>
+	<video width="320" height="240" controls="controls">
+		<source src="qrc:/resource/android.mp4" type="video/mp4>
+	</video>
+</body>
+
+</html>

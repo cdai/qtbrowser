@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>script/jquery-1.7.2.min.js</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<script language="javascript">
+function changeBgcolor(){
+    var choose = document.getElementById("changeC").value;
+    if(choose==1){
+        document.getElementById("fontStyle").style.backgroundColor = "transparent";
+    }else{
+        document.getElementById("fontStyle").style.backgroundColor = "red";
+    }
+}
+</script>
+</head>
+<body bgcolor="transparent">
+    <select id="changeC" name="changeC" onchange="changeBgcolor()">
+        <option value="1">Transparent</option>
+        <option value="2">Normal</option>
+    </select>
+    <br><br>
+    <div style="background-color:transparent;width:100px;height:100px; opacity:1;" id="fontStyle">
+    aaa
+    </div>
+</body>
+</html>

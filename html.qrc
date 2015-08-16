@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>html/welcome.html</file>
+        <file>html/search_x.html</file>
+    </qresource>
+</RCC>
